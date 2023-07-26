@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-uppercase">Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container_body ion-margin">
+    <form [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm.value)">
+      <ion-input
+        label="Email"
+        type="email"
+        minlength="6"
+        maxlength="40"
+        labelPlacement="floating"
+        placeholder="name@example.com"
+        formControlName="email"
+      ></ion-input>
+      <div class="validation-erros">
+        <ng-container *ngFor="let validation of validation_messages.email">
+          <div
+            *ngIf="(
+            loginForm.get('email')?.hasError(validation.type) && 
+            loginForm.get('email')?.dirty) 
+          "
+          >
+            {{validation.message}}
+          </div>
+        </ng-container>
+      </div>
+      <br />
+      <ion-input
+        label="Password"
+        labelPlacement="floating"
+        placeholder="*******"
+        type="password"
+        inlength="6"
+        maxlength="40"
+        formControlName="password"
+      ></ion-input>
+      <div class="validation-erros">
+        <ng-container *ngFor="let validation of validation_messages.password">
+          <div
+            *ngIf="(
+              loginForm.get('password')?.hasError(validation.type) && 
+              loginForm.get('password')?.dirty) 
+            "
+          >
+            {{validation.message}}
+          </div>
+        </ng-container>
+      </div>
+      <br />
+      <ion-button
+        expand="full"
+        shape="round"
+        color="secondary"
+        [disabled]="!loginForm.valid"
+        type="submit"
+      >
+        Ingresar
+      </ion-button>
+    </form>
+    <ion-footer class="ion-margin-top">
+      <ion-button
+        expand="full"
+        shape="round"
+        color="success"
+        (click)="goToRegister()"
+      >
+        Registrate
+      </ion-button>
+    </ion-footer>
+  </div>
+</ion-content>

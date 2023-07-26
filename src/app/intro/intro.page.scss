@@ -1,0 +1,33 @@
+ion-content {
+  width: 100%;
+
+  .close_icon {
+    position: absolute;
+    right: 0;
+    font-size: 40px;
+    color: #000000;
+    z-index: 100;
+  }
+
+  .container_slide {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    gap: 10px;
+
+    .my-favorite-text-color {
+      color: var(--my-favorite-color);
+    }
+
+    .container_img {
+      width: 80%;
+    }
+  }
+
+  p {
+    font-size: var(--parrafo);
+    color: var(--ion-color-dark);
+  }
+}
